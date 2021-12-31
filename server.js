@@ -10,6 +10,15 @@ app.use(bodyParser.urlencoded({extended: false})); //Ligne permettant de récup 
 app.use(adminRoutes); //Utiliser les routes créer dans admin dans un middleware
 app.use(shopRoutes); //Same pour shop
 
+/**
+ * 
+ *  Error page handler
+ * 
+ */
+
+app.use((req, res, next) => {
+    res.status(404).send('<h1>Page Not Found.</h1>');
+})
 
 app.listen(3000, () => {
     console.log("Server is running on port 3000");
