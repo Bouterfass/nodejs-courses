@@ -15,15 +15,19 @@ const app = express();
 *
 */
 
-app.use((req, res, next) => {
+
+app.use('/add-product', (req, res, next) => {
     console.log("We are in the middleware!");
-    next(); // A Utiliser pour rentrer dans le deuxieme middleware
+    res.send('<h1>The Add product page!</h1>');
 });      
 
-app.use((req, res, next) => {
-    console.log("We are in another middleware!");
-    res.send('<h1>Hello from express</h1>');
-});    
+
+
+app.use('/', (req, res, next) => {
+    console.log("We are in the middleware!");
+    res.send('<h1>Welcome to Express!</h1>');
+});      
+
 
 app.listen(3000, () => {
     console.log("Server is running on port 3000");
