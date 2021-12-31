@@ -4,7 +4,8 @@
   "description": "first course",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/Bouterfass/nodejs-courses/issues"
   },
-  "homepage": "https://github.com/Bouterfass/nodejs-courses#readme"
+  "homepage": "https://github.com/Bouterfass/nodejs-courses#readme",
+  "dependencies": {
+    "express": "^4.17.2"
+  }
 }
