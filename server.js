@@ -1,30 +1,29 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 
 const app = express();
 /*
-*
-*   .use permet de créer un middleware (soit du code qui va permettre de faire des choses avant la réponse)
-*   On a une req et une res tel qu'on les connait mais aussi next: une fonction passer en paramètre.
-*
+
+    Inotrduction a body-parser (npm install --save body-parser): quand on veut recupérer  
+    l'information entrée dans le form (req.body) on a rien, c'est pourquoi on utilise body-parser.
+
+    On utilise le body-parser dans un middleware (donc dans une fonction use())
+
 */
 
-/*
-*
-*   Dans l'exemple avec les deux .use ci-dessous, on voit en rafraichissant la page que je que le console log
-*   du premier app.use qui s'affiche, si je veux afficher le deuxième il faut utiliser la fonction next
-*
-*/
-
+app.use(bodyParser.urlencoded({extended: false})); //Ligne permettant de récup les informations d'un form (sous format url ???)
 
 app.use('/add-product', (req, res, next) => {
-    console.log("We are in the middleware!");
-    res.send('<h1>The Add product page!</h1>');
+    res.send('<form action="/product" method="POST"><input type="text" name="title" placeholder="add a product here..." /><button type="submit">add</button></form>');
 });      
 
-
+app.post('/product', (req, res, next) => {
+    console.log(req.body);
+    res.redirect('/');
+    
+});
 
 app.use('/', (req, res, next) => {
-    console.log("We are in the middleware!");
     res.send('<h1>Welcome to Express!</h1>');
 });      
 
