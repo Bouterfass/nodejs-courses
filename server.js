@@ -8,6 +8,7 @@ const shopRoutes = require('./routes/shop');
 const app = express();
 
 app.use(bodyParser.urlencoded({extended: false})); //Ligne permettant de récup les informations d'un form (sous format url ???)
+app.use(express.static(path.join(__dirname, 'public'))); //access the public path (static)
 app.use(adminRoutes); //Utiliser les routes créer dans admin dans un middleware
 app.use(shopRoutes); //Same pour shop
 
